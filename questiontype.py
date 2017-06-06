@@ -1,30 +1,21 @@
 import sys
 import numpy
-# from corenlp import *
 import nltk
 import nltk.data
 import collections
-# import yesno
-# import json
-from bs4 import BeautifulSoup
 from nltk.corpus import stopwords
 from nltk.tag.stanford import StanfordNERTagger
+import nltk
 
-
-# Setup
-# corenlp = StanfordCoreNLP()
-# sent_detector = nltk.data.load("tokenizers/punkt/english.pickle")
-
-# Hardcoded word lists
 yesnowords = ["can", "could", "would", "is", "does", "has", "was", "were", "had", "have", "did", "are", "will"]
 commonwords = ["the", "a", "an", "is", "are", "were", "."]
 questionwords = ["who", "what", "where", "when", "why", "how", "whose", "which", "whom"]
 stopwords=list(stopwords.words('english'))
 
-
-def NerTagger():
+def NerTagger(text):
     st= StanfordNERTagger('ner/english.all.3class.distsim.crf.ser.gz','ner/stanford-ner.jar',encoding='utf-8')
-
+    tokenized_text = word_tokenize(text)
+    classified_text = st.tag(tokenized_text)
 # Take in a tokenized question and return the question type and body
 def processquestion(qwords):
     
@@ -70,14 +61,17 @@ def processquestion(qwords):
     if target[0] in yesnowords:
         target = target[1:]
     # Remove Stopwords
-    # for item in target:
-    #     if item not in stopwords:
+    for i,item in enumerate(target):
+        if item in stopwords:
+            target.remove(target[i])
             
     # Return question data
     return (type, target)
 
-question=raw_input()
-qwords = nltk.word_tokenize(question.replace('?', ''))
-(type, target) = processquestion(qwords)
-print type
-print target
+def returnKeywords(question):
+    # Hardcoded word lists
+    qwords = nltk.word_tokenize(question.replace('?', ''))
+    (type, target) = processquestion(qwords)
+    return (type,target)
+    
+
