@@ -23,7 +23,7 @@ import glob
 xapian_file_name = 0
 
 # For each text file,
-for filePath in glob.glob('*.txt'):
+for filePath in glob.glob('../data/*.txt'):
     # Load content
     content = open(filePath).read()
     # Prepare document

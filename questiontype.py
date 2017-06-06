@@ -4,18 +4,13 @@ import nltk
 import nltk.data
 import collections
 from nltk.corpus import stopwords
-from nltk.tag.stanford import StanfordNERTagger
-import nltk
 
 yesnowords = ["can", "could", "would", "is", "does", "has", "was", "were", "had", "have", "did", "are", "will"]
 commonwords = ["the", "a", "an", "is", "are", "were", "."]
 questionwords = ["who", "what", "where", "when", "why", "how", "whose", "which", "whom"]
 stopwords=list(stopwords.words('english'))
 
-def NerTagger(text):
-    st= StanfordNERTagger('ner/english.all.3class.distsim.crf.ser.gz','ner/stanford-ner.jar',encoding='utf-8')
-    tokenized_text = word_tokenize(text)
-    classified_text = st.tag(tokenized_text)
+
 # Take in a tokenized question and return the question type and body
 def processquestion(qwords):
     
