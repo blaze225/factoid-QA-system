@@ -23,6 +23,7 @@ def wordCountScore(qwords,awords):
 	awords=set(awords)
 
 	return float(len(qwords.intersection(awords)) )/( len(qwords)+len(awords) )
+	# return len(qwords.intersection(awords)) 
 
 def trigramMatchScore(qwords,awords):
 	trigrams1=ngrams(qwords,3)
@@ -33,7 +34,7 @@ def trigramMatchScore(qwords,awords):
 	#print trigrams2
 
 	return float( len(trigrams1.intersection(trigrams2)) )/( len(trigrams1)+len(trigrams2) )
-
+	# return len(trigrams1.intersection(trigrams2))
 
 def bigramMatchScore(qwords,awords):
 	bigrams1=ngrams(qwords,2)
@@ -44,3 +45,4 @@ def bigramMatchScore(qwords,awords):
 	#print trigrams2
 	
 	return float( len(bigrams1.intersection(bigrams2)) )/( len(bigrams1)+len(bigrams2) )
+	# return len(bigrams1.intersection(bigrams2))

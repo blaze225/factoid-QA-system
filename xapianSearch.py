@@ -78,9 +78,9 @@ def searchDoc(queryString):
         listToReturn.append(match.document.get_data())
         if(i>9):
             break;
-    # print '==================='
-    # print 'Number of documents matching query: %s' % matches.get_matches_estimated()
-    # print 'Number of documents returned: %s' % matches.size()
+    # # print '==================='
+    # # print 'Number of documents matching query: %s' % matches.get_matches_estimated()
+    # # print 'Number of documents returned: %s' % matches.size()
     return listToReturn
 
 def extractRelevantText(query, queryParser, content):
@@ -132,3 +132,5 @@ def searchQuery(keywords):
     for i in keywords:
         query =query + " " + i
     return(searchDoc(query))
+
+# searchDoc("+chelsea +win +league")

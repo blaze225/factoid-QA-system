@@ -28,11 +28,11 @@ def processquestion(qwords):
 
     if qidx < 0:
         return ("MISC", qwords)
-
-    if qidx > len(qwords) - 3:
-        target = qwords[:qidx]
-    else:
-        target = qwords[qidx+1:]
+    target=qwords
+    # if qidx > len(qwords) - 3:
+    #     target = qwords[:qidx]
+    # else:
+    #     target = qwords[qidx+1:]
     type = "MISC"
 
     # Determine question type
@@ -56,12 +56,13 @@ def processquestion(qwords):
     if target[0] in yesnowords:
         target = target[1:]
     # Remove Stopwords
-    for i,item in enumerate(target):
-        if item in stopwords:
-            target.remove(target[i])
+    new_target=[]
+    for item in target:
+        if item not in stopwords:
+            new_target.append(item)
             
     # Return question data
-    return (type, target)
+    return (type, new_target)
 
 def returnKeywords(question):
     # Hardcoded word lists

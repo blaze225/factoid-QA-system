@@ -12,9 +12,9 @@ def cleanResults(results):
 
     return res2
 
-def printResults(results):
-    for result in results:
-        print result;
+def printList(lst):
+    for it in lst:
+        print it;
 
 def containsQuestionType(questiontype,taggedResult):
 
@@ -51,13 +51,18 @@ def scoreResult(question,answer):
     #print wcScore
     score=3*triscore+2*biscore+wcScore
 
-    print answer,score
-    return score
+    #print answer,score
+    return (score,answer)
 
 
 def scoreResults(question,results):
+    scoredanswers=[]
     for answer in results:
-        scoreResult(question,answer)
+        scoredanswer=scoreResult(question,answer)
+        scoredanswers.append(scoredanswer)
+
+    return scoredanswers
+
 
 while(True):
     print("Enter Question:")
@@ -71,11 +76,16 @@ while(True):
     results=cleanResults(results)
     #taggedResults=ra.nerTagResults(results)
     #print taggedResults
-    #questiontype=type
-    #qtresults=findQuestionTypeAnswers(questiontype,taggedResults)
-    #printResults(qtresults)
+    # questiontype=type
+    # qtresults=findQuestionTypeAnswers(questiontype,taggedResults)
+    # printResults(qtresults)
     
-    scoreResults(question,results)
+    scoredanswers=scoreResults(question,results)
     
+    scoredanswers=sorted(scoredanswers,reverse=True)
+    printList(scoredanswers)
+    print ""
+    print ""
+    print "=========================================================================================================="
 
 
