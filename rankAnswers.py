@@ -2,11 +2,11 @@ import nltk
 from nltk.tag.stanford import StanfordNERTagger
 from nltk.util import ngrams
 
-def nerTagger(text):
+def nerTagger(sentence):
     st= StanfordNERTagger('ner/english.all.3class.distsim.crf.ser.gz','ner/stanford-ner.jar',encoding='utf-8')
-    tokenized_text = nltk.word_tokenize(text)
-    classified_text = st.tag(tokenized_text)
-    return classified_text
+    words = nltk.word_tokenize(sentence)
+    tagged_words = st.tag(words)
+    return tagged_words
 
 
 def nerTagResults(results):
@@ -16,7 +16,6 @@ def nerTagResults(results):
 		answer_tags.append( (result,answer_tag) )
 
 	return answer_tags
-
 
 def wordCountScore(qwords,awords):
 	qwords=set(qwords)
