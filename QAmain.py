@@ -95,3 +95,4 @@ while(True):
     for sentence in results:
     	tagged_words=ra.nerTagger(sentence)
     	answer=getQuestionTypeAnswer(qtype,tagged_words);
+    	print answer

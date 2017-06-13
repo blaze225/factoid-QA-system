@@ -3,7 +3,7 @@ from nltk.tag.stanford import StanfordNERTagger
 from nltk.util import ngrams
 
 def nerTagger(sentence):
-    st= StanfordNERTagger('ner/english.all.3class.distsim.crf.ser.gz','ner/stanford-ner.jar',encoding='utf-8')
+    st= StanfordNERTagger('ner/english.muc.7class.distsim.crf.ser.gz','ner/stanford-ner.jar',encoding='utf-8')
     words = nltk.word_tokenize(sentence)
     tagged_words = st.tag(words)
     return tagged_words

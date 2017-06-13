@@ -39,7 +39,7 @@ def processquestion(qwords):
     if questionword in ["who", "whose", "whom"]:
         type = "PERSON"
     elif questionword == "where":
-        type = "PLACE"
+        type = "LOCATION"
     elif questionword == "when":
         type = "TIME"
     elif questionword == "how":
@@ -56,13 +56,13 @@ def processquestion(qwords):
     if target[0] in yesnowords:
         target = target[1:]
     # Remove Stopwords
-    new_target=[]
-    for item in target:
-        if item not in stopwords:
-            new_target.append(item)
+    # new_target=[]
+    # for item in target:
+    #     if item not in stopwords:
+    #         new_target.append(item)
             
     # Return question data
-    return (type, new_target)
+    return (type, target)
 
 def returnKeywords(question):
     # Hardcoded word lists
